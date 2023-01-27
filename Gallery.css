@@ -1,0 +1,55 @@
+
+  .gallery {
+    --n: 3; /* number of rows*/
+    --m: 5; /* number of columns */
+    --s: 300px; /* control the size */
+    --g: 10px;  /* control the gap */
+    --f: 1.2;   /* control the scale factor */
+    
+    display: grid;
+    gap: var(--g);
+    width:  calc(var(--m)*var(--s) + (var(--m) - 1)*var(--g));
+    height: calc(var(--n)*var(--s) + (var(--n) - 1)*var(--g));
+    grid-template-columns: repeat(var(--m),auto);
+  }
+  
+  .gallery > img {
+    width: 0;
+    height: 0;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit:cover;
+    cursor: pointer;
+    filter: grayscale(80%);
+    transition: .35s linear;
+  }
+  
+  .gallery img:hover{
+    filter: grayscale(0);
+    width:  calc(var(--s)*var(--f));
+    height: calc(var(--s)*var(--f));
+  }
+  
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background: whitesmoke;
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+ }
+ 
+ .tooltip:hover .tooltiptext {
+    visibility: visible;
+ }
+
+ .tooltip .tooltiptext {
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
